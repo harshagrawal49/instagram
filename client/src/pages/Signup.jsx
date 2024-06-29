@@ -20,7 +20,7 @@ const Signup = () => {
             console.log(data)
             const user = await axios.post("http://localhost:3000/auth/signup",data)
             //res.send(user)
-            navigate('/signin')
+            navigate('/')
             console.log("user created via frontend")
         }
         catch(err){

@@ -46,9 +46,9 @@ export const Signin = async (req, res, next) => {
 
         const { password: _, ...userWithoutPassword } = userExists.toObject();
         const token = jwt.sign({ id: userExists._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
+        console.log(userWithoutPassword)
         res.status(200)
-            .cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' })
+            .cookie('token', token, { httpOnly: true})
             .json(userWithoutPassword);
     } catch (err) {
         console.error("Error searching user", err);

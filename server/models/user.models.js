@@ -18,7 +18,22 @@ const userSchema = new mongoose.Schema ({
     password: {
         type: String,
         required: true
-    }
+    },
+    bio:{
+        type:String
+    },
+    followers: [{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'user'
+    }],
+    following: [{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'user'
+    }],
+    posts:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'post'
+    }]
 })
 
 export const userModel = new mongoose.model('user',userSchema)
